@@ -1,0 +1,114 @@
+<!DOCTYPE>
+<html>
+
+<head>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #86280A;
+}
+
+.container {
+  color: #000;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 4.5rem;
+}
+
+/* general styling */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: -apple-system, 
+    BlinkMacSystemFont, 
+    "Segoe UI", 
+    Roboto, 
+    Oxygen-Sans, 
+    Ubuntu, 
+    Cantarell, 
+    "Helvetica Neue", 
+    sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.nosee {
+  display: none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <h1 id="head">Hackathon ends in:</h1>
+  <ul>
+    <li><span id="hours"></span>Hours</li>
+    <li><span id="dot1">&CenterDot;</span><span id="slash1" class="nosee">/</span>&nbsp;</li>
+    <li><span id="minutes"></span>Minutes</li>
+    <li><span id="dot2">&CenterDot;</span><span id="slash2" class="nosee">/</span>&nbsp;</li>
+    <li><span id="seconds"></span>Seconds</li>
+  </ul>
+</div>
+
+</body>
+
+
+<script>
+	const second = 1000,
+      minute = second * 60,
+      hour = minute * 60;
+
+let countDown = new Date('Jan 19, 2020 18:00:00').getTime(),
+    x = setInterval(function() {
+
+      let now = new Date().getTime(),
+          distance = countDown - now;
+
+        document.getElementById('hours').innerText = Math.floor(distance  / (hour));
+        document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute));
+        document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
+      document.getElementById('dot1').classList.toggle('nosee');
+       document.getElementById('dot2').classList.toggle('nosee');
+       document.getElementById('slash1').classList.toggle('nosee');
+       document.getElementById('slash2').classList.toggle('nosee');
+
+    }, second)
+</script>
+
+</html>
